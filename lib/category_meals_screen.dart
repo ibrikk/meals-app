@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
-  // final String categoryId;
-  // final String categoryTitle;
-
-  // CategoryMealsScreen(this.categoryId, this.categoryTitle);
-
+  static const routeName = '/category-meals';
   @override
   Widget build(BuildContext context) {
     final routeArgs =
@@ -16,7 +12,7 @@ class CategoryMealsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(categoryTitle as String),
       ),
-      body: Center(
+      body: const Center(
         child: Text('The Recipes For The Category!'),
       ),
     );

@@ -27,9 +27,11 @@ class MyApp extends StatelessWidget {
         //             TextStyle(fontSize: 24, fontFamily: 'RobotoCondensed'),
         //       ),
       ),
-      home: CategoriesScreen(),
+      // home: CategoriesScreen(),
+      initialRoute: '/', // OPTIONAL
       routes: {
-        '/category-meals': (ctx) => CategoryMealsScreen(),
+        '/': (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
       },
     );
   }
