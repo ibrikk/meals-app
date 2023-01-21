@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/meal_detail_screen.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
+  final String title;
+  final String imageUrl;
+  final int duration;
+  final Complexity complexity;
+  final Affordability affordability;
+
   const MealItem(
       {super.key,
+      required this.id,
       required this.title,
       required this.imageUrl,
       required this.duration,
@@ -36,18 +45,14 @@ class MealItem extends StatelessWidget {
     }
   }
 
-  final String title;
-  final String imageUrl;
-  final int duration;
-  final Complexity complexity;
-  final Affordability affordability;
-
-  void selectMeal() {}
+  void selectMeal(BuildContext context) {
+    Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: id);
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -97,8 +102,8 @@ class MealItem extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      Icon(Icons.schedule),
-                      SizedBox(
+                      const Icon(Icons.schedule),
+                      const SizedBox(
                         width: 6,
                       ),
                       Text('$duration min'),
@@ -107,19 +112,19 @@ class MealItem extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Icon(Icons.work),
-                      SizedBox(
+                      const SizedBox(
                         width: 6,
                       ),
-                      Text('$complexityText'),
+                      Text(complexityText),
                     ],
                   ),
                   Row(
                     children: <Widget>[
-                      Icon(Icons.attach_money),
-                      SizedBox(
+                      const Icon(Icons.attach_money),
+                      const SizedBox(
                         width: 6,
                       ),
-                      Text('$affordabilityText'),
+                      Text(affordabilityText),
                     ],
                   )
                 ],
